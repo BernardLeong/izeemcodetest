@@ -1,39 +1,79 @@
 
-<h1>Pick Up Information</h1>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-<!-- glyphicon glyphicon-plus -->
-<!-- //if press + Button, -->
+<div class='container'>
+    <h1>Pick Up Information</h1>
     <div>
-        <form method="POST" action="/calculateTime">
-            <button type='submit'>Save</button>
+        <form class="btn btn-link" method="POST" action="/loadPage">
+            <button type="submit" class="btn btn-primary">New Record</button>
         </form>
     
     </div>
+</div>
+
+<% if(newbuttonPressed){ %>
+    <div class='container'>
+        <div>
+            <div>
+               <form method="POST" action="/calculateTime">
+                <div class='container'>
+                    <label for='locname'>Location Name</label>
+                    <select data-style="btn-info" name="locname">
+                        <option value="">Select Location</option>
+                            <% locationName.forEach((row)=>{ %>
+                                <option value="<%= row %>"><%= row %></option>
+                        <% }) %>
+                    </select>
+
+                    <label for='locname'>Location Address</label>
+                    <select data-style="btn-info" name="locname">
+                        <option value="">Select Address</option>
+                            <% locationAddress.forEach((row)=>{ %>
+                                <option value="<%= row %>"><%= row %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div>&nbsp;</div>
+                <div class='container'>
+                    <label for='locname'>Contact Name</label>
+                    <select data-style="btn-info" name="locname">
+                            <option value="">Select Contact Name</option>
+                                <% contactName.forEach((row)=>{ %>
+                                    <option value="<%= row %>"><%= row %></option>
+                            <% }) %>
+                        </select>
+
+                    <label for='locname'>Contact Address</label>
+
+                        <select data-style="btn-info" name="locname">
+                                <option value="">Select Contact No.</option>
+                                    <% contactNo.forEach((row)=>{ %>
+                                        <option value="<%= row %>"><%= row %></option>
+                                <% }) %>
+                            </select>
+                    </div>
+                    <div class='container'>
+                    <label for='address'>Pick Up Start Time</label> 
+                    <input type="text" value="<%= starttime %>" name="starttime" id='startdate'>
+                    <label for='address'>Pick Up End Time</label> 
+                    <input type="text" value="<%= endtime %>" name="endtime" id='locUrl'>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>            
+               </form>
+            </div>
+        
+        </div>
+    </div>
+<% } %>
+
+
 <!-- //render the form -->
 
 <!-- if submit close form -->
 <!-- if save if press  -->
-<% if(hi == 'data'){ %>
-<div>
-    <form method="POST" action="/calculateTime">
-        <button type='submit'>Save</button>
-    </form>
-
-</div>
-
-<% } else{ %>  
-    <div>
-            <form method="POST" action="/calculateTime">
-                <label for='locname'>Location Name</label>
-                <input type="text" value="<%= hi %>" name="locname" id='locUrl'>
-                <!-- <label for='address'>Location Address</label> -->
-                <button type='submit'>Save</button>
-            </form>
-        
-        </div>
-<% } %>    
+   
+  
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
